@@ -160,7 +160,7 @@ public class MainProgram extends JFrame {
         btnNewMatch.setFont(new Font("Microsoft JhengHei UI", Font.PLAIN, 16));
         btnNewMatch.setForeground(Color.WHITE);
         btnNewMatch.setContentAreaFilled(false);
-
+        setLocationRelativeTo(null);
         btnNewMatch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new ClickButtonEvent().nuovaPartita();
