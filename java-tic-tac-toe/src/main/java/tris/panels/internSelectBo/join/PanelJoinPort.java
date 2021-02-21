@@ -1,4 +1,4 @@
-package tris.panels.networking.join;
+package tris.panels.internSelectBo.join;
 
 import java.awt.Color;
 

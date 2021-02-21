@@ -3,7 +3,7 @@ package tris.panels.selectBox;
 import javax.swing.JPanel;
 
 import tris.panels.App;
-import tris.panels.networking.join.JoinPanel;
+import tris.panels.internSelectBo.join.JoinPanel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

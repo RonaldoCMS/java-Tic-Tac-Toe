@@ -1,4 +1,4 @@
-package tris.panels.networking.join;
+package tris.components;
 
 import javax.swing.JLabel;
 import java.awt.Font;

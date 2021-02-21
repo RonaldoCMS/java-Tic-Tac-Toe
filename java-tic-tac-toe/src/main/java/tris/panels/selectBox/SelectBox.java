@@ -20,11 +20,11 @@ public class SelectBox extends JPanel {
 		setBackground(new Color(34, 110, 112));
 		
 		hostGame = new HostGame(this, app);
-		hostGame.setBounds(0, 90, 300, 60);
+		hostGame.setBounds(0, 202, 300, 60);
 		add(hostGame);
 		
 		joinGame = new JoinGame(this, app);
-		joinGame.setBounds(0, 149, 300, 60);
+		joinGame.setBounds(0, 261, 300, 60);
 		add(joinGame);
 		setVisible(true);
 		

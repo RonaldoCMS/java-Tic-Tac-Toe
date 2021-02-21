@@ -1,8 +1,11 @@
-package tris.panels.networking.join;
+package tris.panels.internSelectBo.join;
 
 import java.awt.Color;
 
 import javax.swing.JPanel;
+
+import tris.components.JoinLabel;
+
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
@@ -24,7 +27,7 @@ public class PanelJoinIP extends JPanel {
 		add(textField);
 		
 		setVisible(true);
-		setBackground(Color.red);
+		setBackground(new Color(34, 110, 112));
 		setSize(300, 30);
 	}
 	

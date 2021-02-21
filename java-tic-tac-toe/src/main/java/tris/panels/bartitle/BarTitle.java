@@ -60,6 +60,7 @@ public class BarTitle extends JPanel {
 		setVisible(true);
 		
 	}
+	
 	private void panelExitProperty() {
 		
 		panelExit = new JPanel();
