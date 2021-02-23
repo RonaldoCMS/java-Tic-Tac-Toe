@@ -17,6 +17,8 @@ import javax.swing.border.EtchedBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class test extends JFrame {
 
@@ -70,6 +72,11 @@ public class test extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(textField.getText().toString());
+			}
+		});
 		btnNewButton.setFocusable(false);
 		btnNewButton.setInheritsPopupMenu(true);
 		btnNewButton.setIgnoreRepaint(true);

@@ -28,7 +28,6 @@ public class MoveFrame {
 	            public void mouseDragged(MouseEvent e) {
 	                Point newClick = e.getLocationOnScreen(); //Recupera le nuove coordinate
 	                newClick.translate(-clickMouse.x, -clickMouse.y);
-
 	                f.setLocation(newClick);
 	            }
 	        });
