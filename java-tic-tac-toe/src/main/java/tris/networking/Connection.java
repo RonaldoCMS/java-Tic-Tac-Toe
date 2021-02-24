@@ -5,17 +5,20 @@ import tris.networking.server.JServer;
 
 public class Connection {
 
+	private boolean boolServer;
 	private JServer server;
 	private JClient client;
 	private String nickname;
 	
 	public Connection(JServer server, JClient client, String nickname) {
 		super();
+		boolServer = false;
 		this.server = server;
 		this.client = client;
 	}
 	
 	public Connection() {
+		boolServer = false;
 		server = new JServer();
 		client = new JClient();
 	}
@@ -43,5 +46,15 @@ public class Connection {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public boolean isBoolServer() {
+		return boolServer;
+	}
+
+	public void setBoolServer(boolean boolServer) {
+		this.boolServer = boolServer;
+	}
+	
+	
 	
 }

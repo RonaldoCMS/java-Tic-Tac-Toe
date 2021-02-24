@@ -29,8 +29,10 @@ public class JClient implements Runnable {
 	private boolean accept;
 	private int test;
 	private String indirizzo;
+	private boolean azione;
 	
 	public JClient() {
+		azione = false;
 		accept = false;
 		interrupted = false;
 		test = 0;
@@ -183,6 +185,14 @@ public class JClient implements Runnable {
 
 	public void setTest(int test) {
 		this.test = test;
+	}
+
+	public boolean isAzione() {
+		return azione;
+	}
+
+	public void setAzione(boolean azione) {
+		this.azione = azione;
 	}
 
 	

@@ -2,11 +2,13 @@ package tris.graphics.home.panels.join;
 
 import javax.swing.JPanel;
 
+import tris.events.PlayEvent;
 import tris.graphics.App;
 import tris.graphics.home.Home;
 import tris.graphics.home.panels.join.panels.JoinPanel;
 import tris.util.RowTris;
 
+import java.awt.Event;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,9 +24,7 @@ public class JoinGame extends JPanel {
 		this.home = home;;
 		panel = new RowTris("Partecipa ad una partita");
 		panel.setBounds(0, 0, 300, 60);
-		
 
-		
 		setLayout(null);
 		setSize(300, 60);
 		add(panel);
@@ -40,7 +40,6 @@ public class JoinGame extends JPanel {
 				join = new JoinPanel(app);
 				app.add(join);
 				app.getConnessione().setNickname(nick);
-				System.out.println("[APP] Sei loggato con " + nick);
 			}
 		});
 	}

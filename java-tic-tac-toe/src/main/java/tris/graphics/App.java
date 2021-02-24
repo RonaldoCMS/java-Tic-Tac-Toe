@@ -25,21 +25,23 @@ public class App extends JPanel {
 	
 	private JFrame frame;
 	private JPanel barTitle;
-	private Home selectBox;
+	private Home home;
 	private Connection connessione;
 	
 	public App(JFrame frame) {
 		this.connessione = new Connection();
-		//setSize(frame.getWidth(), frame.getHeight());
 		this.frame = frame;
 		
+		appProperty();
+		barTitleProperty();
+		selectBoxProperty();
+	}
+	
+	private void appProperty() {
+		//setSize(frame.getWidth(), frame.getHeight());
 		setSize(300, 350);
 		setLayout(null);
 		setBackground(new Color(34, 110, 112));
-		barTitleProperty();
-		selectBoxProperty();
-		
-		
 	}
 
 	private void barTitleProperty() {
@@ -51,16 +53,16 @@ public class App extends JPanel {
 	}
 	
 	private void selectBoxProperty() {
-		selectBox = new Home(this);
-		add(selectBox);
+		home = new Home(this);
+		add(home);
 	}
 
 	public Home getSelectBox() {
-		return selectBox;
+		return home;
 	}
 
 	public void setSelectBox(Home selectBox) {
-		this.selectBox = selectBox;
+		this.home = selectBox;
 	}
 
 	public Connection getConnessione() {

@@ -21,16 +21,21 @@ import java.io.IOException;
 public class Home extends JPanel {
 	
 	private App app;
+	
 	private HostGame hostGame;
 	private JoinGame joinGame;
 	private PanelNickname nickGame;
+	
 	private Logo logo;
+	
 	private String name;
 
 	public Home(App app) {
-		
 		this.app = app;
-		
+		homeProperty();
+	}
+	
+	public void homeProperty() {
 		setLayout(null);
 		
 		setBounds(0, 29, 300, 321);
@@ -84,6 +89,4 @@ public class Home extends JPanel {
 	public void setNickGame(PanelNickname nickGame) {
 		this.nickGame = nickGame;
 	}
-	
-	
 }

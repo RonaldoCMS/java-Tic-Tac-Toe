@@ -1,5 +1,9 @@
 package tris.graphics.home.panels.host.panels;
-
+/***
+ * 
+ * CLASSE OBSOLETA
+ * 
+ */
 import java.awt.Color;
 
 import javax.swing.JOptionPane;

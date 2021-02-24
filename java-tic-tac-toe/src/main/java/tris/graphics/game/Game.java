@@ -19,10 +19,10 @@ import java.awt.FlowLayout;
 public class Game extends JPanel {
 	
 	private App app;
-	Griglia panel_1;
-	Punteggio panel ;
+	private Griglia panel_1;
+	private Punteggio panel ;
 	
-	public Game(App app, int server) {
+	public Game(App app) {
 		this.app = app;
 		
 		setBounds(0, 29, 300, 321);
@@ -30,20 +30,40 @@ public class Game extends JPanel {
 		setVisible(true);
 		setBackground(new Color(34, 110, 112));
 		
-		if(server == 0) {
-			panel = new Punteggio(app, 0);
-			
-		}
-		else if(server == 1) {
-			panel = new Punteggio(app, 1);
-		}
+		panel = new Punteggio(app);
 		panel.setBounds(10, 11, 280, 50);
 		add(panel);
 		
 		
-		panel_1 = new Griglia();
+		panel_1 = new Griglia(app.getConnessione());
 		panel_1.setBounds(10, 72, 280, 238);
 		add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 3, 0, 0));
 	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Griglia getPanel_1() {
+		return panel_1;
+	}
+
+	public void setPanel_1(Griglia panel_1) {
+		this.panel_1 = panel_1;
+	}
+
+	public Punteggio getPanel() {
+		return panel;
+	}
+
+	public void setPanel(Punteggio panel) {
+		this.panel = panel;
+	}
+	
+	
 }

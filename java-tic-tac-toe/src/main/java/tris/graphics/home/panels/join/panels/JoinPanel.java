@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import tris.events.PlayEvent;
 import tris.graphics.App;
 import tris.networking.Connection;
 import tris.threading.LoadPanel;
@@ -36,7 +37,7 @@ public class JoinPanel extends JPanel {
 		
 		separatorProperty();
 		ipProperty();
-		okProperty();
+		okProperty(this);
 		backProperty();
 		logoProperty();
 		
@@ -67,19 +68,13 @@ public class JoinPanel extends JPanel {
 		back.setLocation(10, 275);
 	}
 
-	private void okProperty() {
+	private void okProperty(final JPanel panel) {
 		ok = new ButtonTris("Connetti");
 		ok.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 				if(insertIndirizzo()) {
-					LoadPanel load = new LoadPanel(app);
-					load.avviaClient();
-					load.setBounds(0, 244, 300, 40);
-					app.getSelectBox().setVisible(false);
-					setVisible(false);
-					app.add(load);
+					ok.addMouseListener(new PlayEvent(app, panel, false));
 				}
 				
 			}

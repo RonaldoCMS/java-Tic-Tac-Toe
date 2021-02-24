@@ -43,8 +43,8 @@ public class LoadPanel extends JPanel implements Runnable {
 		clientOpen = false;
 	}
 	
-	public void gameProperty(int n) {
-		game = new Game(app, n);
+	public void gameProperty() {
+		game = new Game(app);
 		game.setVisible(false);
 		app.add(game);
 		game.setBounds(0, 29, 300, 321);
@@ -57,7 +57,7 @@ public class LoadPanel extends JPanel implements Runnable {
 		this.setBackground(new Color(34, 110, 112));
 		setSize(300, 40);
 		add(text);
-		threadProperty();
+		//threadProperty();
 	}
 
 	private void threadProperty() {
@@ -120,7 +120,7 @@ public class LoadPanel extends JPanel implements Runnable {
 			loading(i, txt);
 			if(client.isAccept()) {
 				setVisible(false);
-				gameProperty(1);
+				gameProperty();
 				game.setVisible(true);
 				System.out.println("[JCLIENT] connesso!");
 				return;
@@ -143,17 +143,19 @@ public class LoadPanel extends JPanel implements Runnable {
 		String txt = getText().getText();
 		int i = 0;
 		sleeping(1);
+		app.getConnessione().setBoolServer(true);
 		
 		while(!server.isInterrupted()) {
 			loading(i, txt);
 			if(server.isAccept()) {
 				setVisible(false);
-				gameProperty(0);
+				gameProperty();
 				game.setVisible(true);
 				System.out.println("[JSERVER] connesso!");
 				return;
 			}
 		}
+		app.getConnessione().setBoolServer(false);
 		getText().setText("Tempo Scaduto.");
 		System.out.println("[JSERVER]\t Non ho trovato nessun client disponibile");
 		sleeping(3);

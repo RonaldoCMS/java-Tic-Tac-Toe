@@ -27,8 +27,10 @@ public class JServer implements Runnable {
 	private Socket socket;
 	private boolean accept;
 	private boolean interrupted;
+	private boolean azione;
 	
 	public JServer() {
+		azione = true;
 		accept = false;
 		interrupted = false;
 
@@ -150,6 +152,13 @@ public class JServer implements Runnable {
 	}
 
 	
-	
+
+	public boolean isAzione() {
+		return azione;
+	}
+
+	public void setAzione(boolean azione) {
+		this.azione = azione;
+	}
 	
 }

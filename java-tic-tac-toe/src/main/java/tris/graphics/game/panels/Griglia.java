@@ -16,11 +16,16 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
 
+import tris.events.ClickButtonEvent;
+import tris.networking.Connection;
+
 public class Griglia extends JPanel {
 
+	private Connection connessione;
 	private Blocco[] blocco;
 	
-	public Griglia() {
+	public Griglia(Connection connessione) {
+		
 		setSize( 280, 238);
 		setBackground(new Color(34, 110, 112));
 		setLayout(new GridLayout(0, 3, 0, 0));
@@ -28,9 +33,17 @@ public class Griglia extends JPanel {
 		blocco = new Blocco[9];
 		
 		for(int i=0; i<9; i++) {
-			blocco[i] = new Blocco();
+			blocco[i] = new Blocco(connessione, i);
 			add(blocco[i]);
 		}
+		
+		for(int i=0; i<9;i++) {
+			if(connessione.isBoolServer())
+				blocco[i].addActionListener(new ClickButtonEvent(connessione.getServer(), blocco));
+			else
+				blocco[i].addActionListener(new ClickButtonEvent(connessione.getClient(), blocco));
+		}
+		//System.out.println("Indirizzo Array di Blocchi:\t" + blocco.hashCode());
 	}
 
 	@Override
