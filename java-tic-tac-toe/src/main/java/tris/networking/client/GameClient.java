@@ -36,7 +36,7 @@ public class GameClient implements Runnable {
 				
 				panel.gameProperty();
 				panel.getGame().setVisible(true);
-				
+				panel.getClient().setAccept(false);
 				return;
 			}
 			
@@ -45,7 +45,7 @@ public class GameClient implements Runnable {
 		panel.getText().setText("Tempo Scaduto.");
 		System.out.println("[JCLIENT]\t Nessuno si è connesso al server");
 		sleeping(3);
-		panel.getApp().getSelectBox().setVisible(true);
+		panel.getApp().getHome().setVisible(true);
 		panel.setVisible(false);
 		System.out.println("[JCLIENT] Caricamento terminato");
 		panel.setClientOpen(false);

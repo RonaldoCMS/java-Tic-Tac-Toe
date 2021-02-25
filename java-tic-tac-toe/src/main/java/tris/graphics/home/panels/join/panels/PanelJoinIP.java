@@ -7,9 +7,6 @@ import javax.swing.JPanel;
 import tris.util.LabelTris;
 import tris.util.TextFieldTris;
 
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
-
 public class PanelJoinIP extends JPanel {
 
 	private LabelTris text;
@@ -27,9 +24,11 @@ public class PanelJoinIP extends JPanel {
 		text.setBounds(0, 0, 300, 30);
 		add(textField);
 		
-		setVisible(true);
 		setBackground(new Color(34, 110, 112));
 		setSize(300, 30);
+		
+		textField.setVisible(true);
+		setVisible(true);
 	}
 
 	public LabelTris getText() {

@@ -51,6 +51,7 @@ public class JServer implements Runnable {
 			System.out.println("[JSERVER] Avviato il server");
 			server.setSoTimeout(10000 * 10);
 			socket = server.accept();
+			
 			isr = new InputStreamReader(socket.getInputStream());
 			osw = new OutputStreamWriter(socket.getOutputStream());
 			
@@ -59,15 +60,20 @@ public class JServer implements Runnable {
 			
 			pw = new PrintWriter(bw, true);
 			accept = true;
+			
 			server.close();
 		} 
 		catch(SocketTimeoutException sok) {	
 			System.out.println("[JSERVER] server non associato a nessun client");
 			disconetti();
 		}
+		catch(SocketException e) {
+			System.out.println(e.toString());
+		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	private void disconetti() {

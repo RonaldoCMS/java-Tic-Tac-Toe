@@ -35,7 +35,7 @@ public class JoinGame extends JPanel {
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nick = app.getSelectBox().getNickGame().getTextField().getTextField().getText();
+				String nick = app.getHome().getNickGame().getTextField().getTextField().getText();
 				home.setVisible(false);
 				join = new JoinPanel(home);
 				app.add(join);
@@ -51,4 +51,30 @@ public class JoinGame extends JPanel {
 	public void setApp(App app) {
 		this.app = app;
 	}
+
+	public Home getHome() {
+		return home;
+	}
+
+	public void setHome(Home home) {
+		this.home = home;
+	}
+
+	public RowTris getPanel() {
+		return panel;
+	}
+
+	public void setPanel(RowTris panel) {
+		this.panel = panel;
+	}
+
+	public JoinPanel getJoin() {
+		return join;
+	}
+
+	public void setJoin(JoinPanel join) {
+		this.join = join;
+	}
+	
+	
 }

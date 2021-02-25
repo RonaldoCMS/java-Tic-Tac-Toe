@@ -40,10 +40,11 @@ public class JoinPanel extends JPanel {
 		setLayout(null);
 		
 		separatorProperty();
-		ipProperty();
+		
 		okProperty(this);
 		backProperty();
 		logoProperty();
+		ipProperty();
 		
 		setBounds(0, 29, 300, 321);
 		setBackground(new Color(34, 110, 112));
@@ -51,7 +52,7 @@ public class JoinPanel extends JPanel {
 		this.add(ok);
 		this.add(back);
 		add(logo);
-		
+		setVisible(true);
 	}
 
 	private void logoProperty() {
@@ -65,8 +66,8 @@ public class JoinPanel extends JPanel {
 		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				app.getHome().setVisible(true); 
 				setVisible(false);
-				app.getSelectBox().setVisible(true); 
 			}
 		});
 		back.setLocation(10, 275);
@@ -103,9 +104,9 @@ public class JoinPanel extends JPanel {
 	private void ipProperty() {
 		ip = new PanelJoinIP();
 		ip.setBounds(0, 219, 300, 45);
+		ip.setLayout(null);
 		this.add(ip);
 		ip.setVisible(true);
-		ip.setLayout(null);
 	}
 
 	private void separatorProperty() {
@@ -115,4 +116,62 @@ public class JoinPanel extends JPanel {
 		add(separator);
 	}
 
+	public Home getHome() {
+		return home;
+	}
+
+	public void setHome(Home home) {
+		this.home = home;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public Logo getLogo() {
+		return logo;
+	}
+
+	public void setLogo(Logo logo) {
+		this.logo = logo;
+	}
+
+	public PanelJoinIP getIp() {
+		return ip;
+	}
+
+	public void setIp(PanelJoinIP ip) {
+		this.ip = ip;
+	}
+
+	public ButtonTris getOk() {
+		return ok;
+	}
+
+	public void setOk(ButtonTris ok) {
+		this.ok = ok;
+	}
+
+	public ButtonTris getBack() {
+		return back;
+	}
+
+	public void setBack(ButtonTris back) {
+		this.back = back;
+	}
+
+	public LoadPanel getLoad() {
+		return load;
+	}
+
+	public void setLoad(LoadPanel load) {
+		this.load = load;
+	}
+
+	
+	
 }

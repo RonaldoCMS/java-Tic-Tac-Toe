@@ -13,6 +13,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class test extends JFrame implements MouseListener{
 
@@ -51,7 +54,16 @@ public class test extends JFrame implements MouseListener{
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 3, 0, 0));
+		contentPane.setLayout(null);
+		TestPanel test = new TestPanel(this);
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				test.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(114, 135, 89, 23);
+		contentPane.add(btnNewButton);
 		
 		
 		tasto = new Tasto[9];

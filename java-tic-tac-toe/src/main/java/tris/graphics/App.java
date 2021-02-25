@@ -57,11 +57,11 @@ public class App extends JPanel {
 		add(home);
 	}
 
-	public Home getSelectBox() {
+	public Home getHome() {
 		return home;
 	}
 
-	public void setSelectBox(Home selectBox) {
+	public void setHome(Home selectBox) {
 		this.home = selectBox;
 	}
 

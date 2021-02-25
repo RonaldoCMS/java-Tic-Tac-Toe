@@ -243,6 +243,19 @@ public class Griglia extends JPanel implements Runnable {
 		}
 	}
 	
+	private void visibleHome() {
+		this.setVisible(false);
+		home.setVisible(true);
+		home.getNickGame().setVisible(true);
+		home.getHostGame().setVisible(true);
+		home.getJoinGame().setVisible(true);
+		
+		try {
+		home.getJoinGame().getJoin().setVisible(true);
+		} catch(NullPointerException e) {
+			//TO-DO
+		}
+	}
 	private void gestisciException() {
 		
 		if(connessione.isBoolServer()) {
@@ -250,8 +263,7 @@ public class Griglia extends JPanel implements Runnable {
 			setVisible(false);
 			try {
 				connessione.getServer().getSocket().close();
-				app.getSelectBox().setVisible(true);
-				home.getHostGame().setVisible(true);
+				 visibleHome();	
 			} 
 			catch (IOException e) {
 				e.printStackTrace();
@@ -263,7 +275,7 @@ public class Griglia extends JPanel implements Runnable {
 			setVisible(false);
 			try {
 				connessione.getClient().getSocket().close();
-				app.getSelectBox().setVisible(true);
+				visibleHome();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

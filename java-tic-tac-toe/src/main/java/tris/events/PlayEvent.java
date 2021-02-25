@@ -27,13 +27,13 @@ public class PlayEvent implements MouseListener{
 
 
 	public void mouseClicked(MouseEvent e) {
-		this.nickname = this.app.getSelectBox().getNickGame().getTextField().getTextField().getText();
+		this.nickname = this.app.getHome().getNickGame().getTextField().getTextField().getText();
 		
 		app.getConnessione().setNickname(nickname);
 		System.out.println("[APP] Sei loggato con " + nickname);
 		
 		loadPanel();
-		app.getSelectBox().setVisible(false);
+		app.getHome().setVisible(false);
 		panel.setVisible(false);
 		
 	}
