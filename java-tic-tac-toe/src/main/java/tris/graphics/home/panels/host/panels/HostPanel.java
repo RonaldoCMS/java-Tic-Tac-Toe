@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import tris.graphics.App;
+import tris.graphics.home.Home;
 import tris.networking.Connection;
 import tris.networking.server.JServer;
 import tris.threading.LoadPanel;
@@ -20,11 +21,13 @@ import javax.swing.ImageIcon;
 
 public class HostPanel extends JPanel {
 	
+	private Home home;
 	private LoadPanel panel;
 	private App app;
 
-	public HostPanel(App app) {
-		this.app = app;
+	public HostPanel(Home home) {
+		this.home = home;
+		this.app = home.getApp();
 		setBounds(0, 29, 300, 321);
 		setLayout(null);
 		setBackground(new Color(34, 100, 112));
@@ -33,7 +36,7 @@ public class HostPanel extends JPanel {
 	}
 
 	private void panelProperty() {
-		panel = new LoadPanel(app);
+		panel = new LoadPanel(home);
 		panel.avviaServer();
 		panel.setBounds(0, 244, 300, 40);
 		add(panel);

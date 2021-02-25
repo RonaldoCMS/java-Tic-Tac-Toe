@@ -7,6 +7,7 @@ import javax.swing.JSeparator;
 
 import tris.events.PlayEvent;
 import tris.graphics.App;
+import tris.graphics.home.Home;
 import tris.networking.Connection;
 import tris.threading.LoadPanel;
 import tris.util.ButtonTris;
@@ -23,7 +24,9 @@ import javax.swing.SwingConstants;
 public class JoinPanel extends JPanel {
 	
 	// <!-- Classe principale -->
+	private Home home;
 	private App app;
+	
 	
 	private Logo logo;
 	private PanelJoinIP ip;
@@ -31,8 +34,9 @@ public class JoinPanel extends JPanel {
 	private ButtonTris back;
 	private LoadPanel load;
 	
-	public JoinPanel(final App app) {
-		this.app = app;
+	public JoinPanel(Home home) {
+		this.home = home;
+		this.app = home.getApp();
 		setLayout(null);
 		
 		separatorProperty();
@@ -74,7 +78,7 @@ public class JoinPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(insertIndirizzo()) {
-					ok.addMouseListener(new PlayEvent(app, panel, false));
+					ok.addMouseListener(new PlayEvent(home, panel, false));
 				}
 				
 			}

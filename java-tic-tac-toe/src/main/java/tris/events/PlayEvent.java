@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 import tris.graphics.App;
+import tris.graphics.home.Home;
 import tris.threading.LoadPanel;
 
 public class PlayEvent implements MouseListener{
@@ -14,10 +15,12 @@ public class PlayEvent implements MouseListener{
 	private boolean server;
 	private JPanel panel;
 	private String nickname;
+	private Home home;
 	private App app;
 	
-	public PlayEvent(App app, JPanel panel, boolean server) {
-		this.app = app;
+	public PlayEvent(Home home, JPanel panel, boolean server) {
+		this.home = home;
+		this.app = home.getApp();
 		this.panel = panel;
 		this.server = server;
 	}
@@ -36,7 +39,7 @@ public class PlayEvent implements MouseListener{
 	}
 	
 	private void loadPanel() {
-		LoadPanel load = new LoadPanel(app);
+		LoadPanel load = new LoadPanel(home);
 		
 		if(server)
 			load.avviaServer();

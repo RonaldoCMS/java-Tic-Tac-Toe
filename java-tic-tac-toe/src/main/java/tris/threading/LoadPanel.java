@@ -9,14 +9,20 @@ import javax.swing.JPanel;
 
 import tris.graphics.App;
 import tris.graphics.game.Game;
+import tris.graphics.home.Home;
+import tris.networking.client.GameClient;
 import tris.networking.client.JClient;
+import tris.networking.server.GameServer;
 import tris.networking.server.JServer;
 import tris.util.LabelTris;
 import tris.util.TLabel;
 
-public class LoadPanel extends JPanel implements Runnable {
+public class LoadPanel extends JPanel {
 	
+	private Home home;
 	private App app;
+	
+	private Game game;
 	
 	//Accorciare il codice
 	private JServer server;
@@ -26,8 +32,6 @@ public class LoadPanel extends JPanel implements Runnable {
 	private JLabel text;
 	private String textLabel;
 	
-	private Game game;
-	
 	private boolean stop;
 	private boolean serverOpen;
 	private boolean clientOpen;
@@ -35,7 +39,9 @@ public class LoadPanel extends JPanel implements Runnable {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public LoadPanel(App app) {
+	public LoadPanel(Home home) {
+		this.home = home;
+		this.app = home.getApp();
 		property(app);
 		this.server = app.getConnessione().getServer();
 		this.client = app.getConnessione().getClient();
@@ -44,7 +50,7 @@ public class LoadPanel extends JPanel implements Runnable {
 	}
 	
 	public void gameProperty() {
-		game = new Game(app);
+		game = new Game(home);
 		game.setVisible(false);
 		app.add(game);
 		game.setBounds(0, 29, 300, 321);
@@ -57,123 +63,30 @@ public class LoadPanel extends JPanel implements Runnable {
 		this.setBackground(new Color(34, 110, 112));
 		setSize(300, 40);
 		add(text);
-		//threadProperty();
 	}
 
-	private void threadProperty() {
-		Thread thread = new Thread(this);
-		thread.start();
-	}
 	
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 	public void avviaServer() {
+		Thread thread = new Thread(new GameServer(this));
 		serverOpen = true;
-		server.avvia();
-		threadProperty();
+		thread.start();
+		server.avvia();	
 		
 	}
 	
 	public void avviaClient() {
+		Thread thread = new Thread(new GameClient(this));	
 		clientOpen = true;
-		client.avvia();
-		threadProperty();
-		
-	}
-	
-	private boolean serverInterrupted() {
-		return server.isInterrupted();
-	}
-	
-	private boolean clientInterrupted() {
-		return client.isInterrupted();
-	}
-	
-	private void running() {
-		if(serverOpen) {
-			whileServer();
-			serverOpen=false;
-		}
-		else if(clientOpen) {
-			whileClient();
-			clientOpen=false;
-		}
-	}
-	
-	private void loading(int i, String txt) {
-		sleeping(1);
-		getText().setText(txt);
-		for(int j = 0; j < 3; j++) {
-			sleeping(1);
-			getText().setText(getText().getText().concat("."));
-		}
-		if(i >= 3) {
-			i = 0;
-		}
-		i++;
-	}	
-
-	private void whileClient() {
-		String txt = getText().getText();
-		int i = 0;
-		sleeping(1);
-		
-		while(!client.isInterrupted()) {
-			loading(i, txt);
-			if(client.isAccept()) {
-				setVisible(false);
-				gameProperty();
-				game.setVisible(true);
-				System.out.println("[JCLIENT] connesso!");
-				return;
-			}
-			
-		}
-		
-		
-		getText().setText("Tempo Scaduto.");
-		System.out.println("[JCLIENT]\t Nessuno si è connesso al server");
-		sleeping(3);
-		app.getSelectBox().setVisible(true);
-		this.setVisible(false);
-		System.out.println("[JCLIENT] Caricamento terminato");
-		
-	}
-
-
-	private void whileServer() {
-		String txt = getText().getText();
-		int i = 0;
-		sleeping(1);
-		app.getConnessione().setBoolServer(true);
-		
-		while(!server.isInterrupted()) {
-			loading(i, txt);
-			if(server.isAccept()) {
-				setVisible(false);
-				gameProperty();
-				game.setVisible(true);
-				System.out.println("[JSERVER] connesso!");
-				return;
-			}
-		}
-		app.getConnessione().setBoolServer(false);
-		getText().setText("Tempo Scaduto.");
-		System.out.println("[JSERVER]\t Non ho trovato nessun client disponibile");
-		sleeping(3);
-		app.getSelectBox().setVisible(true);
-		this.setVisible(false);
-		System.out.println("[JSERVER] Caricamento terminato");
-	}
-
-	public void run() {
-		running();
-	}
-	
-	public void sleeping(int delay) {
-		try {
-			Thread.sleep(delay * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		thread.start();	
+		client.avvia();	
 	}
 
 	public boolean isStop() {
@@ -199,9 +112,72 @@ public class LoadPanel extends JPanel implements Runnable {
 	public void setNickname(JLabel nickname) {
 		this.nickname = nickname;
 	}
+
+	public JServer getServer() {
+		return server;
+	}
+
+	public void setServer(JServer server) {
+		this.server = server;
+	}
+
+	public JClient getClient() {
+		return client;
+	}
+
+	public void setClient(JClient client) {
+		this.client = client;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public String getTextLabel() {
+		return textLabel;
+	}
+
+	public void setTextLabel(String textLabel) {
+		this.textLabel = textLabel;
+	}
+
+
+	public boolean isServerOpen() {
+		return serverOpen;
+	}
+
+	public void setServerOpen(boolean serverOpen) {
+		this.serverOpen = serverOpen;
+	}
+
+	public boolean isClientOpen() {
+		return clientOpen;
+	}
+
+	public void setClientOpen(boolean clientOpen) {
+		this.clientOpen = clientOpen;
+	}
 	
+	private boolean serverInterrupted() {
+		return server.isInterrupted();
+	}
 	
-	
+	private boolean clientInterrupted() {
+		return client.isInterrupted();
+	}
+
+	public Home getHome() {
+		return home;
+	}
+
+	public void setHome(Home home) {
+		this.home = home;
+	}
+
 	
 	
 }

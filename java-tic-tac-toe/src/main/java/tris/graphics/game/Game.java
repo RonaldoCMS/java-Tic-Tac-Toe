@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import tris.graphics.App;
 import tris.graphics.game.panels.Griglia;
 import tris.graphics.game.panels.Punteggio;
+import tris.graphics.home.Home;
 
 import javax.swing.JLabel;
 import java.awt.GridBagLayout;
@@ -18,27 +19,30 @@ import java.awt.FlowLayout;
 
 public class Game extends JPanel {
 	
+	private Home home;
 	private App app;
-	private Griglia panel_1;
-	private Punteggio panel ;
+	private Griglia griglia;
+	private Punteggio punteggio;
 	
-	public Game(App app) {
-		this.app = app;
+	public Game(Home home) {
+		this.home = home;
+		this.app = home.getApp();
 		
 		setBounds(0, 29, 300, 321);
 		setLayout(null);
 		setVisible(true);
 		setBackground(new Color(34, 110, 112));
 		
-		panel = new Punteggio(app);
-		panel.setBounds(10, 11, 280, 50);
-		add(panel);
+		punteggio = new Punteggio(app);
+		punteggio.setBounds(10, 11, 280, 50);
+		add(punteggio);
 		
 		
-		panel_1 = new Griglia(app.getConnessione());
-		panel_1.setBounds(10, 72, 280, 238);
-		add(panel_1);
-		panel_1.setLayout(new GridLayout(0, 3, 0, 0));
+		griglia = new Griglia(home, punteggio, app.getConnessione());
+		griglia.setBounds(10, 72, 280, 238);
+		add(griglia);
+		griglia.setLayout(new GridLayout(0, 3, 0, 0));
+		
 	}
 
 	public App getApp() {
@@ -50,19 +54,19 @@ public class Game extends JPanel {
 	}
 
 	public Griglia getPanel_1() {
-		return panel_1;
+		return griglia;
 	}
 
 	public void setPanel_1(Griglia panel_1) {
-		this.panel_1 = panel_1;
+		this.griglia = panel_1;
 	}
 
 	public Punteggio getPanel() {
-		return panel;
+		return punteggio;
 	}
 
 	public void setPanel(Punteggio panel) {
-		this.panel = panel;
+		this.punteggio = panel;
 	}
 	
 	

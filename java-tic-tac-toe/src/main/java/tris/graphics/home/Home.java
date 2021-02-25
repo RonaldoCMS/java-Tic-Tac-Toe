@@ -89,4 +89,39 @@ public class Home extends JPanel {
 	public void setNickGame(PanelNickname nickGame) {
 		this.nickGame = nickGame;
 	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public HostGame getHostGame() {
+		return hostGame;
+	}
+
+	public void setHostGame(HostGame hostGame) {
+		this.hostGame = hostGame;
+	}
+
+	public JoinGame getJoinGame() {
+		return joinGame;
+	}
+
+	public void setJoinGame(JoinGame joinGame) {
+		this.joinGame = joinGame;
+	}
+
+	public Logo getLogo() {
+		return logo;
+	}
+
+	public void setLogo(Logo logo) {
+		this.logo = logo;
+	}
+	
+	
+	
 }

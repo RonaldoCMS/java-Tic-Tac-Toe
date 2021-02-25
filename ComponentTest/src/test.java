@@ -1,29 +1,23 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.logging.Logger;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class test extends JFrame {
+import javax.swing.JLabel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class test extends JFrame implements MouseListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private Tasto[] tasto;
 
 	/**
 	 * Launch the application.
@@ -45,9 +39,10 @@ public class test extends JFrame {
 	 * Create the frame.
 	 */
 	public test() {
+		
 		setBackground(Color.DARK_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 318, 300);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setVerifyInputWhenFocusTarget(false);
@@ -56,44 +51,44 @@ public class test extends JFrame {
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		textField = new JTextField();
-		textField.setBorder(null);
-		textField.setDisabledTextColor(Color.RED);
-		textField.setAutoscrolls(false);
-		textField.setInheritsPopupMenu(true);
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setForeground(Color.WHITE);
-		textField.setOpaque(false);
-		textField.setBounds(60, 187, 261, 35);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(textField.getText().toString());
-			}
-		});
-		btnNewButton.setFocusable(false);
-		btnNewButton.setInheritsPopupMenu(true);
-		btnNewButton.setIgnoreRepaint(true);
-		btnNewButton.setVerifyInputWhenFocusTarget(false);
-		btnNewButton.setRolloverEnabled(false);
-		btnNewButton.setRequestFocusEnabled(false);
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("OK");
-			}
-		});
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		btnNewButton.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setBounds(154, 114, 129, 35);
-		contentPane.add(btnNewButton);
+		tasto = new Tasto[9];
+		for(int i = 0; i < 9; i++) {
+			tasto[i] = new Tasto();
+			getContentPane().add(tasto[i]);
+		}
+		
+	 }
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("prova");
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

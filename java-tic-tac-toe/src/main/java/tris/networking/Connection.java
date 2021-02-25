@@ -9,6 +9,7 @@ public class Connection {
 	private JServer server;
 	private JClient client;
 	private String nickname;
+	private String enemy;
 	
 	public Connection(JServer server, JClient client, String nickname) {
 		super();
@@ -53,6 +54,14 @@ public class Connection {
 
 	public void setBoolServer(boolean boolServer) {
 		this.boolServer = boolServer;
+	}
+
+	public String getEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(String enemy) {
+		this.enemy = enemy;
 	}
 	
 	

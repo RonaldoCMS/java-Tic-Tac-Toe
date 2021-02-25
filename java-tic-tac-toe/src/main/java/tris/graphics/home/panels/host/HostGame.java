@@ -41,11 +41,11 @@ public class HostGame extends JPanel {
 	}
 
 	private void events() {
-		panel.addMouseListener(new PlayEvent(app, this, true));
+		panel.addMouseListener(new PlayEvent(selectBox, this, true));
 	}
 
 	public void load() {
-		LoadPanel load = new LoadPanel(app);
+		LoadPanel load = new LoadPanel(selectBox);
 		load.avviaServer();
 		load.setBounds(0, 244, 300, 40);
 		app.add(load);

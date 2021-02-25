@@ -37,62 +37,16 @@ public class Punteggio extends JPanel {
 		
 		io = new LabelPunteggio();
 		lui = new LabelPunteggio();
-				
-		if(app.getConnessione().isBoolServer()) {
-			server();
-		} else {
-			client();
-		}
+		
+		aggiorna();
 		
 		add(io);
 		add(lui);
 	}
 	
-	//Cambiare punteggio
-	private void streamServer() {
-		
-	mioPunteggio();
-		
-		try {
-			
-			app.getConnessione().getServer().getPw().println(io.getText());
-			String textLui = app.getConnessione().getServer().getBr().readLine();
-			System.out.println("[GAME] Sei contro " + textLui + "!");
-			
-			luiTxt = textLui;
-			lui.setText(textLui);
-			
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, e.toString());
-		}
-	}
-	
-	private void streamClient() {
-	
-	mioPunteggio();
-		
-		try {
-			String textLui = app.getConnessione().getClient().getBr().readLine();
-			app.getConnessione().getClient().getPw().println(io.getText());
-			System.out.println("[GAME] Sei contro " + textLui + "!");
-			lui.setText(textLui);
-			luiTxt = textLui;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void mioPunteggio() {
-		io.setText(app.getConnessione().getNickname() + ": " + ioPoints);
-		System.out.println(io.getText());
-	}
-
-	private void server() {
-		streamServer();
-	}
-
-	private void client() {
-		streamClient();
+	public void aggiorna() {
+		io.setText(app.getConnessione().getNickname() + " : " + ioPoints);
+		lui.setText(app.getConnessione().getEnemy() + " : " + luiPoints);
 	}
 
 	public String getIoTxt() {

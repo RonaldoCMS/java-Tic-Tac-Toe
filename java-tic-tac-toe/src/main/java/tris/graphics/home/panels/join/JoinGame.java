@@ -37,7 +37,7 @@ public class JoinGame extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				String nick = app.getSelectBox().getNickGame().getTextField().getTextField().getText();
 				home.setVisible(false);
-				join = new JoinPanel(app);
+				join = new JoinPanel(home);
 				app.add(join);
 				app.getConnessione().setNickname(nick);
 			}
