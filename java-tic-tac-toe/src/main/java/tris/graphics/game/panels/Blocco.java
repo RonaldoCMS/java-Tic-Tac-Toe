@@ -9,21 +9,28 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import tris.networking.Connection;
+import tris.util.Elementi;
 
 public class Blocco extends JButton{
 
+	private Griglia griglia;
 	private Connection connessione;
 	private int posizione;
 	
-	public Blocco(final Connection connessione, int posizione) {
-		this.connessione = connessione;
+	public Blocco(Griglia griglia, int posizione) {
+		this.griglia = griglia;
+		this.connessione = griglia.getConnessione();
 		this.posizione = posizione;
 		
-		setFont(new Font("Monospaced", Font.PLAIN, 18));
+		property();
+	}
+
+	private void property() {
+		setFont(new Font("Monospaced", Font.PLAIN, 60));
 		setForeground(Color.WHITE);
 		setBorder(null);
 		
-		setBackground(Color.DARK_GRAY);
+		setBackground(Elementi.background);
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setHorizontalTextPosition(SwingConstants.CENTER);

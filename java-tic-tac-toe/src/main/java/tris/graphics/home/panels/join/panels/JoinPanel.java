@@ -11,6 +11,7 @@ import tris.graphics.home.Home;
 import tris.networking.Connection;
 import tris.threading.LoadPanel;
 import tris.util.ButtonTris;
+import tris.util.Elementi;
 import tris.util.Logo;
 
 import java.awt.BorderLayout;
@@ -47,7 +48,7 @@ public class JoinPanel extends JPanel {
 		ipProperty();
 		
 		setBounds(0, 29, 300, 321);
-		setBackground(new Color(34, 110, 112));
+		setBackground(Elementi.background);
 		
 		this.add(ok);
 		this.add(back);
@@ -81,7 +82,6 @@ public class JoinPanel extends JPanel {
 				if(insertIndirizzo()) {
 					ok.addMouseListener(new PlayEvent(home, panel, false));
 				}
-				
 			}
 		});
 		ok.setLocation(154, 275);

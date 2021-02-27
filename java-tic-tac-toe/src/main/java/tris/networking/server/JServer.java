@@ -32,7 +32,6 @@ public class JServer implements Runnable {
 	public JServer() {
 		azione = true;
 		accept = false;
-		interrupted = false;
 
 	}
 	
@@ -47,6 +46,7 @@ public class JServer implements Runnable {
 	
 	private void connetti() {
 		try {
+			interrupted = false;
 			server = new ServerSocket(6789);
 			System.out.println("[JSERVER] Avviato il server");
 			server.setSoTimeout(10000 * 10);

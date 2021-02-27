@@ -15,7 +15,6 @@ import tris.networking.client.JClient;
 import tris.networking.server.GameServer;
 import tris.networking.server.JServer;
 import tris.util.LabelTris;
-import tris.util.TLabel;
 
 public class LoadPanel extends JPanel {
 	

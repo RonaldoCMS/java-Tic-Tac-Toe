@@ -46,6 +46,11 @@ public class GameClient implements Runnable {
 		System.out.println("[JCLIENT]\t Nessuno si è connesso al server");
 		sleeping(3);
 		panel.getApp().getHome().setVisible(true);
+		try {
+			panel.getApp().getConnessione().getClient().getSocket().close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		panel.setVisible(false);
 		System.out.println("[JCLIENT] Caricamento terminato");
 		panel.setClientOpen(false);

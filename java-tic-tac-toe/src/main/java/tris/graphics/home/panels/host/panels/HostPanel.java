@@ -14,6 +14,7 @@ import tris.graphics.home.Home;
 import tris.networking.Connection;
 import tris.networking.server.JServer;
 import tris.threading.LoadPanel;
+import tris.util.Elementi;
 import tris.util.Logo;
 
 import javax.swing.JLabel;
@@ -30,8 +31,7 @@ public class HostPanel extends JPanel {
 		this.app = home.getApp();
 		setBounds(0, 29, 300, 321);
 		setLayout(null);
-		setBackground(new Color(34, 100, 112));
-		
+		setBackground(Elementi.background);
 		panelProperty();
 	}
 
@@ -46,15 +46,8 @@ public class HostPanel extends JPanel {
 		logo.setBounds(10, 11, 280, 222);
 		add(logo);
 	}
-
 	
-
 	public JServer getServer() {
 		return app.getConnessione().getServer();
 	}
-
-	/*public void setServer(JServer server) {
-		this.server = server;
-	}*/
-	
 }

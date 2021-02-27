@@ -39,6 +39,7 @@ public class JoinGame extends JPanel {
 				home.setVisible(false);
 				join = new JoinPanel(home);
 				app.add(join);
+				join.setVisible(true);
 				app.getConnessione().setNickname(nick);
 			}
 		});

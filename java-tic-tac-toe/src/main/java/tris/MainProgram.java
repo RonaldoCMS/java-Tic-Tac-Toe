@@ -59,7 +59,7 @@ public class MainProgram extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		try {
-			this.setIconImage(ImageIO.read(new File("./images/logo.png")));
+			this.setIconImage(ImageIO.read(new File("./images/bg1.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

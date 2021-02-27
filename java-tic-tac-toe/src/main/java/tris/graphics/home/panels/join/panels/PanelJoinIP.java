@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import tris.util.Elementi;
 import tris.util.LabelTris;
 import tris.util.TextFieldTris;
 
@@ -24,7 +25,7 @@ public class PanelJoinIP extends JPanel {
 		text.setBounds(0, 0, 300, 30);
 		add(textField);
 		
-		setBackground(new Color(34, 110, 112));
+		setBackground(Elementi.background);
 		setSize(300, 30);
 		
 		textField.setVisible(true);

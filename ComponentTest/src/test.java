@@ -43,6 +43,13 @@ public class test extends JFrame implements MouseListener{
 	 */
 	public test() {
 		
+		String x = "Y                                          ";
+		String testo[] = x.split(" ");
+		
+		System.out.println(testo[0]);
+		
+		
+ 		
 		setBackground(Color.DARK_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 318, 300);

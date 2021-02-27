@@ -11,42 +11,51 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import tris.graphics.App;
+import tris.graphics.game.Game;
+import tris.util.Elementi;
 
 public class Punteggio extends JPanel {
-	
+
 	private App app;
-	
+
 	private String ioTxt;
 	private String luiTxt;
-	
+
 	private int ioPoints;
 	private int luiPoints;
-	
+
 	private LabelPunteggio io;
 	private LabelPunteggio lui;
 
-	public Punteggio(App app) {
-		this.app = app;
-		
+	public Punteggio(Game game) {
+		this.app = game.getApp();
+
 		ioPoints = 0;
 		luiPoints = 0;
-		
-		setBackground(new Color(34, 110, 112));
+
+		setBackground(Elementi.background);
 		setBounds(10, 11, 280, 50);
 		setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		io = new LabelPunteggio();
 		lui = new LabelPunteggio();
-		
+
 		aggiorna();
-		
+
 		add(io);
 		add(lui);
 	}
-	
+
 	public void aggiorna() {
-		io.setText(app.getConnessione().getNickname() + " : " + ioPoints);
-		lui.setText(app.getConnessione().getEnemy() + " : " + luiPoints);
+		if(app.getConnessione().isBoolServer()) {
+			io.setText("[X] " + app.getConnessione().getNickname() + " : " + ioPoints);
+			lui.setText("[O] " + app.getConnessione().getEnemy() + " : " + luiPoints);
+		}
+		else {
+			io.setText("[O] " + app.getConnessione().getNickname() + " : " + ioPoints);
+			lui.setText("[X] " + app.getConnessione().getEnemy() + " : " + luiPoints);
+		}
+		
 	}
 
 	public String getIoTxt() {
@@ -96,7 +105,5 @@ public class Punteggio extends JPanel {
 	public void setLui(LabelPunteggio lui) {
 		this.lui = lui;
 	}
-	
-	
-	
+
 }

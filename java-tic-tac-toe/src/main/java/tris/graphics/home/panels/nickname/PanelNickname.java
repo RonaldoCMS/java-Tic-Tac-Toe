@@ -16,6 +16,7 @@ public class PanelNickname extends RowTris {
 		
 		
 		textField = new TextFieldTris();
+		textField.getTextField().setBounds(0, 0, 170, 38);
 		textField.setBounds(130, 0, 170, 60);
 		add(textField);
 		

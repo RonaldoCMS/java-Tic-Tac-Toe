@@ -34,7 +34,6 @@ public class JClient implements Runnable {
 	public JClient() {
 		azione = false;
 		accept = false;
-		interrupted = false;
 		test = 0;
 	}
 	
@@ -45,6 +44,7 @@ public class JClient implements Runnable {
 
 	public void connetti() {
 		try {
+			interrupted = false;
 			socket = new Socket(indirizzo, 6789);
 			isr = new InputStreamReader(socket.getInputStream());
 			osw = new OutputStreamWriter(socket.getOutputStream());

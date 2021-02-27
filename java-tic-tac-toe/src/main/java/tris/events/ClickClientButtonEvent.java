@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import tris.graphics.App;
 import tris.graphics.game.panels.Blocco;
+import tris.graphics.game.panels.Griglia;
 import tris.networking.Connection;
 
 public class ClickClientButtonEvent implements ActionListener {
@@ -16,12 +17,11 @@ public class ClickClientButtonEvent implements ActionListener {
 	private Connection connessione;
 	private Blocco[] blocchi;
 	private Blocco blocco;
-	private Thread thread;
 	
-	public ClickClientButtonEvent(App app, Blocco[] blocchi) {
-		this.app = app;
+	public ClickClientButtonEvent(Griglia griglia) {
+		this.app = griglia.getApp();
 		this.connessione = app.getConnessione();
-		this.blocchi = blocchi;
+		this.blocchi = griglia.getBlocco();
 	}
 	
 	public ClickClientButtonEvent(App app, Blocco[] blocchi, boolean first) {
@@ -41,6 +41,7 @@ public class ClickClientButtonEvent implements ActionListener {
 		if(blocco.getText().equals("")) {
 			connessione.getClient().setAzione(false);
 			blocco.setText(connessione.getNickname());
+			blocco.setText("O");
 			connessione.getClient().getPw().println(blocco.getPosizione());
 		}
 	}

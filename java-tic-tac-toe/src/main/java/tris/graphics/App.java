@@ -17,6 +17,7 @@ import net.miginfocom.swing.MigLayout;
 import tris.graphics.bartitle.BarTitle;
 import tris.graphics.home.Home;
 import tris.networking.Connection;
+import tris.util.Elementi;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -39,9 +40,9 @@ public class App extends JPanel {
 	
 	private void appProperty() {
 		//setSize(frame.getWidth(), frame.getHeight());
-		setSize(300, 350);
+		setSize(Elementi.dimensione);
 		setLayout(null);
-		setBackground(new Color(34, 110, 112));
+		setBackground(Elementi.background);
 	}
 
 	private void barTitleProperty() {

@@ -13,6 +13,7 @@ import org.w3c.dom.events.MouseEvent;
 
 import tris.graphics.App;
 import tris.graphics.game.panels.Blocco;
+import tris.graphics.game.panels.Griglia;
 import tris.networking.Connection;
 import tris.networking.client.JClient;
 import tris.networking.server.JServer;
@@ -23,13 +24,11 @@ public class ClickServerButtonEvent implements ActionListener {
 	private Connection connessione;
 	private Blocco[] blocchi;
 	private Blocco blocco;
-	private Thread thread;
 	
-	public ClickServerButtonEvent(App app, Blocco[] blocchi) {
-		this.app = app;
+	public ClickServerButtonEvent(Griglia griglia) {
+		this.app = griglia.getApp();
 		this.connessione = app.getConnessione();
-		this.blocchi = blocchi;
-		
+		this.blocchi = griglia.getBlocco();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -44,6 +43,7 @@ public class ClickServerButtonEvent implements ActionListener {
 		if(blocco.getText().equals("")) {
 			connessione.getServer().setAzione(false);
 			blocco.setText(connessione.getNickname());
+			blocco.setText("X");
 			connessione.getServer().getPw().println(blocco.getPosizione());
 		}
 	}

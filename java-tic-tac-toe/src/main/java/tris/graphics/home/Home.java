@@ -6,6 +6,8 @@ import tris.graphics.App;
 import tris.graphics.home.panels.host.HostGame;
 import tris.graphics.home.panels.join.JoinGame;
 import tris.graphics.home.panels.nickname.PanelNickname;
+import tris.util.Elementi;
+import tris.util.LabelTris;
 import tris.util.Logo;
 
 import javax.imageio.ImageIO;
@@ -17,6 +19,7 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.SwingConstants;
 
 public class Home extends JPanel {
 	
@@ -25,6 +28,7 @@ public class Home extends JPanel {
 	private HostGame hostGame;
 	private JoinGame joinGame;
 	private PanelNickname nickGame;
+	private LabelTris crediti;
 	
 	private Logo logo;
 	
@@ -39,38 +43,49 @@ public class Home extends JPanel {
 		setLayout(null);
 		
 		setBounds(0, 29, 300, 321);
-		setBackground(new Color(34, 110, 112));
+		setBackground(Elementi.background);
 		setVisible(true);
 		
 		hostGame();
 		joinGame();
 		nickGame();
 		logo();
+		creditiProperty();
+	}
+
+	private void creditiProperty() {
+		crediti = new LabelTris("Copyright © - Fabio Danubbio - 2021");
+		crediti.setHorizontalAlignment(SwingConstants.CENTER);
+		crediti.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		crediti.setBounds(0, 300, 300, 21);
+		crediti.setVisible(true);
+		add(crediti);
+		
 	}
 
 	private void nickGame() {
 		nickGame = new PanelNickname();
-		nickGame.getTextField().getTextField().setText("Anonimo");
-		nickGame.setBounds(0, 166, 300, 38);
+		nickGame.getTextField().getTextField().setText("Fabio");
+		nickGame.setBounds(0, 149, 300, 38);
 		add(nickGame);
 	}
 
 	private void logo() {
 		logo = new Logo();
 		logo.logoMin();
-		logo.setBounds(10, 11, 280, 160);
+		logo.setBounds(10, 11, 280, 142);
 		add(logo);
 	}
 
 	private void joinGame() {
 		joinGame = new JoinGame(this, app);
-		joinGame.setBounds(0, 261, 300, 60);
+		joinGame.setBounds(0, 239, 300, 60);
 		add(joinGame);
 	}
 
 	private void hostGame() {
 		hostGame = new HostGame(this, app);
-		hostGame.setBounds(0, 202, 300, 60);
+		hostGame.setBounds(0, 187, 300, 60);
 		add(hostGame);
 	}
 	

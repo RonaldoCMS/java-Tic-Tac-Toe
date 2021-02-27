@@ -36,7 +36,6 @@ public class GameServer implements Runnable {
 				
 				panel.gameProperty();
 				panel.getGame().setVisible(true);
-				
 				System.out.println("[JSERVER] connesso!");
 				panel.getServer().setAccept(false);
 				return;
@@ -46,7 +45,8 @@ public class GameServer implements Runnable {
 		panel.getText().setText("Tempo Scaduto.");
 		System.out.println("[JSERVER]\t Non ho trovato nessun client disponibile");
 		sleeping(3);
-		panel.getApp().getHome().setVisible(true);
+		panel.getHome().setVisible(true);
+		panel.getHome().getHostGame().setVisible(true);
 		panel.setVisible(false);
 		System.out.println("[JSERVER] Caricamento terminato");
 		panel.setServerOpen(false);

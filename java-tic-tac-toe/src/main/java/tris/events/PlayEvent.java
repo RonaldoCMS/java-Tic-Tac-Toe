@@ -17,6 +17,7 @@ public class PlayEvent implements MouseListener{
 	private String nickname;
 	private Home home;
 	private App app;
+	private LoadPanel load;
 	
 	public PlayEvent(Home home, JPanel panel, boolean server) {
 		this.home = home;
@@ -31,6 +32,7 @@ public class PlayEvent implements MouseListener{
 		
 		app.getConnessione().setNickname(nickname);
 		System.out.println("[APP] Sei loggato con " + nickname);
+		load = new LoadPanel(home);
 		
 		loadPanel();
 		app.getHome().setVisible(false);
@@ -39,8 +41,6 @@ public class PlayEvent implements MouseListener{
 	}
 	
 	private void loadPanel() {
-		LoadPanel load = new LoadPanel(home);
-		
 		if(server)
 			load.avviaServer();
 		else

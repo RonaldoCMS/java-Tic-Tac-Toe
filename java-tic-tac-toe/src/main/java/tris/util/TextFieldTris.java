@@ -25,20 +25,20 @@ public class TextFieldTris extends JPanel {
 		
 		textField = new JTextField();
 		textField.setDoubleBuffered(true);
-		textField.setBounds(0, 0, 200, 38);
+		textField.setBounds(10, 0, 190, 38);
 		textField.setVisible(true);
 		setLayout(null);
 		textField.setBorder(null);
 		textField.setAutoscrolls(false);
 		textField.setInheritsPopupMenu(true);
-		textField.setFont(new Font("Monospaced", Font.PLAIN, 23));
+		textField.setFont(new Font("Monospaced", Font.PLAIN, 16));
 		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setForeground(Color.WHITE);
 		textField.setOpaque(false);
 		add(textField);
 		
 		separatore = new JSeparator();
-		separatore.setBounds(0, 32, 200, 6);
+		separatore.setBounds(0, 29, 200, 9);
 		separatore.setForeground(Color.BLACK);
 		add(separatore);
 		
